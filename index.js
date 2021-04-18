@@ -27,7 +27,7 @@ function log(message, levels) {
     //init now state
     {
         let now = await fs.readFile('./now.json');
-        if(now != '{}') {
+        if (now != '{}') {
             global.now = JSON.parse(now);
         } else {
             global.now = {};
@@ -47,19 +47,19 @@ function log(message, levels) {
         let result = await ocrWorker.recognize(img,);
         return result.data.text.replace(/\s/g, '');
     }
-    
+
     //init websocket server
-    const wss = new websocket.Server({port: 8988});
+    const wss = new websocket.Server({ port: 8988 });
     wss.on('connection', function (ws, req) {
         ws.on('message', async function (message) {
             let request = JSON.parse(message);
-            switch(request.type) {
+            switch (request.type) {
                 case 'sync':
-                    if(request.method == 'push') {
+                    if (request.method == 'push') {
                         global.now[request.imei] = request.data;
                         await fs.writeFile('./now.json', JSON.stringify(global.now, undefined, 2));
                         log(`收到来自 ${request.imei} 的 Now State, 已存储。`, 'warn')
-                    }else if(request.method == 'pull') {
+                    } else if (request.method == 'pull') {
                         ws.send(JSON.stringify({
                             type: 'sync',
                             code: 200,
@@ -69,7 +69,7 @@ function log(message, levels) {
                         log(`收到来自 ${req.socket.remoteAddress} 的同步请求, 已发送。`, 'warn')
                     }
                     break;
-                case 'log': 
+                case 'log':
                     log(`[REMOTE]:${request.message}`, request.level);
                     break;
                 case 'ocr':
@@ -81,7 +81,7 @@ function log(message, levels) {
                         result: result
                     }))
                     break;
-                default: 
+                default:
                     ws.send(JSON.stringify({
                         type: 'error',
                         message: 'unknown request type'
@@ -93,13 +93,15 @@ function log(message, levels) {
             type: 'connected',
             message: 'connect successed.'
         }));
+
     })
     log('WebSocket Server init successed. Listining in port 8988', 'warn');
 
     log('File watch initialized.', 'warn');
+
     nodeWatch('./now.json', {}, async (event, name) => {
         let content = await fs.readJson(name);
-        if(JSON.stringify(content) == JSON.stringify(global.now)) {
+        if (JSON.stringify(content) == JSON.stringify(global.now)) {
             return;
         }
         log('now.json 发生变化，向客户端广播变化...')
