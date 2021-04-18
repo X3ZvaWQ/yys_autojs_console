@@ -1,0 +1,75 @@
+{
+  "861490141346420": {
+    "switch": {
+      "global": false,
+      "fengmo": true,
+      "douji": true,
+      "tupo": true,
+      "tansuo": true,
+      "digui": true,
+      "jiejie": true,
+      "daily": true
+    },
+    "global": {
+      "fighting": "tupo",
+      "last_kill_fengmo_boss": 1618737210.376,
+      "last_kill_digui": 1618724044.157,
+      "last_get_free_blackegg": 1618723924.411
+    },
+    "tupo": {
+      "setting": {
+        "geren_mode": "only3",
+        "geren_order": "453210",
+        "liao_order": "43210"
+      },
+      "liao_clear": true,
+      "geren_demotion": false,
+      "refresh_time": 0,
+      "geren_fight_min_ticket": 12,
+      "liao_cd": 1618740002.658,
+      "liao_fight_ed": true,
+      "geren_fight_clicked": false
+    },
+    "tansuo": {
+      "setting": {
+        "list": {},
+        "mode": "all_boss_last",
+        "food_priority": "sucai",
+        "max": 28
+      },
+      "target": "28",
+      "level": "28",
+      "fighting": null,
+      "end": true,
+      "findCount": 0,
+      "max": 28,
+      "last": 28
+    },
+    "douji": {
+      "setting": {
+        "targetScore": 1800
+      }
+    },
+    "jiejie": {
+      "jiyang_end": 1618758878.068,
+      "card_end": 0,
+      "jingyanjiuhu_full": true,
+      "jingyanjiuhu_last": 9104
+    },
+    "fengmo": {
+      "clicked": false,
+      "boss_try_times": 0,
+      "clickedclicked": false
+    },
+    "temp": {
+      "activityTo": "fengmo",
+      "last_click_button": "enter_game",
+      "last_interface": "unknown",
+      "click_ignore_count": 0,
+      "rerunning": false
+    },
+    "settings": {
+      "log_level": "info"
+    }
+  }
+}

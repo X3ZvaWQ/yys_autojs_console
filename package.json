@@ -1,0 +1,18 @@
+{
+  "name": "yys_autojs_console",
+  "version": "1.0.0",
+  "description": "a console for yys_autojs",
+  "main": "index.js",
+  "author": "X3ZvaWQ",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "colors-console": "^1.0.3",
+    "fs-extra": "^9.1.0",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "node-watch": "^0.7.1",
+    "tesseract.js": "^2.1.4",
+    "ws": "^7.4.4"
+  }
+}
