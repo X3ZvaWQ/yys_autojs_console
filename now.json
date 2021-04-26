@@ -1,7 +1,7 @@
 {
   "861490141346420": {
     "switch": {
-      "global": false,
+      "global": true,
       "fengmo": true,
       "douji": true,
       "tupo": true,
@@ -12,9 +12,9 @@
     },
     "global": {
       "fighting": "tupo",
-      "last_kill_fengmo_boss": 1618737210.376,
-      "last_kill_digui": 1618724044.157,
-      "last_get_free_blackegg": 1618723924.411
+      "last_kill_fengmo_boss": 1619343110914,
+      "last_kill_digui": 1619409697678,
+      "last_get_free_blackegg": 1619394193837
     },
     "tupo": {
       "setting": {
@@ -22,25 +22,25 @@
         "geren_order": "453210",
         "liao_order": "43210"
       },
-      "liao_clear": true,
+      "liao_clear": 1619263006136,
       "geren_demotion": false,
-      "refresh_time": 0,
+      "refresh_time": 1619322439092,
       "geren_fight_min_ticket": 12,
-      "liao_cd": 1618740002.658,
+      "liao_cd": 1619413427172,
       "liao_fight_ed": true,
-      "geren_fight_clicked": false
+      "geren_fight_clicked": true
     },
     "tansuo": {
       "setting": {
         "list": {},
-        "mode": "all_boss_last",
+        "mode": "all_boss_first",
         "food_priority": "sucai",
         "max": 28
       },
       "target": "28",
       "level": "28",
-      "fighting": null,
-      "end": true,
+      "fighting": "boss",
+      "end": false,
       "findCount": 0,
       "max": 28,
       "last": 28
@@ -51,10 +51,12 @@
       }
     },
     "jiejie": {
-      "jiyang_end": 1618758878.068,
+      "jiyang_end": 1619413818442,
       "card_end": 0,
       "jingyanjiuhu_full": true,
-      "jingyanjiuhu_last": 9104
+      "jingyanjiuhu_last": 9104,
+      "jiyang_try_times": 0,
+      "jiyang_force": false
     },
     "fengmo": {
       "clicked": false,
@@ -63,13 +65,16 @@
     },
     "temp": {
       "activityTo": "fengmo",
-      "last_click_button": "enter_game",
+      "last_click_button": "fighting_victory_confirm",
       "last_interface": "unknown",
       "click_ignore_count": 0,
-      "rerunning": false
+      "rerunning": false,
+      "last_unknown": 1619413507497
     },
     "settings": {
-      "log_level": "info"
+      "log_level": "info",
+      "min_loop_interval": 200,
+      "max_loop_nterval": 400
     }
   }
 }
