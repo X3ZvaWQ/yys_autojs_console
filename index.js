@@ -104,7 +104,7 @@ function log(message, levels) {
         if (JSON.stringify(content) == JSON.stringify(global.now)) {
             return;
         }
-        log('now.json 发生变化，向客户端广播变化...')
+        log('[LOCAL] now.json 发生变化，向客户端广播变化...')
         global.now = content;
         wss.clients.forEach(function (client) {
             if (client.readyState === websocket.OPEN) {
