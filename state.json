@@ -1,0 +1,219 @@
+{
+    "861490141346420": {
+        "settings": {
+            "mode": "auto",
+            "log_level": "info",
+            "min_loop_interval": 200,
+            "max_loop_interval": 400,
+            "min_click_interval": 200,
+            "max_click_interval": 400,
+            "max_scene_away_allow": 180,
+            "dinghao_wait": 600,
+            "reconnect_mode": "campus-net",
+            "packageName": "com.netease.onmyoji.uc"
+        },
+        "switch": {
+            "global": true,
+            "fengmo": true,
+            "liaotu": true,
+            "liaotili": true,
+            "tupo": true,
+            "digui": true,
+            "diguiShare": false,
+            "friendPoint": true,
+            "jiyang": true,
+            "yinjie": true,
+            "liaotu_start": true
+        },
+        "global": {
+            "fighting": "tupo_geren",
+            "last_get_free_blackegg": 1626736064562,
+            "last_kill_yinjie": 1626607878412
+        },
+        "team": {
+            "access_request": false,
+            "tongxin_request": false,
+            "role": "leader-",
+            "number_of_teams": 2,
+            "fighting": ""
+        },
+        "friends": {
+            "last_send_friend_point": 1626736110988,
+            "friend_point_send_count": 0
+        },
+        "tupo": {
+            "setting": {
+                "geren_mode": "all",
+                "geren_order": "543210",
+                "liao_order": "543210"
+            },
+            "last_liao_start": 1626736124602,
+            "liao_clear": 1626677370454,
+            "buy_buff": true,
+            "geren_demotion": false,
+            "geren_demotion_level": 58,
+            "refresh_time": 1625713051457,
+            "geren_fight_min_ticket": 12,
+            "liao_cd": 1626739730760,
+            "liao_fight_ed": true,
+            "geren_fight_clicked_times": 0,
+            "geren_fight_clicked": false
+        },
+        "tansuo": {
+            "setting": {
+                "list": {},
+                "mode": "all_boss_first",
+                "change_food": true,
+                "food_priority": "n",
+                "max": 28
+            },
+            "fighting": null,
+            "end": true,
+            "findCount": 0,
+            "max": 28,
+            "last": "28",
+            "target": "28",
+            "level": "28"
+        },
+        "jiejie": {
+            "min_jiyang_gouyu_1": 67,
+            "min_jiyang_gouyu_2": 50,
+            "min_jiyang_tili_1": 151,
+            "min_jiyang_tili_2": 118,
+            "last_get_liaotili": 1626736054368,
+            "jiyang_end": 1626757636702,
+            "card_end": 0,
+            "jingyanjiuhu_full": true,
+            "jingyanjiuhu_last": 9104,
+            "jiyang_try_times": 0,
+            "jiyang_force": false
+        },
+        "digui": {
+            "last_kill_digui": 1626667275068,
+            "last_share_digui": 0
+        },
+        "fengmo": {
+            "last_kill_fengmo_boss": 1626685872291,
+            "clicked": false,
+            "boss_try_times": 0
+        },
+        "temp": {
+            "activityTo": "fengmo",
+            "last_click_button": "fighting_victory_confirm",
+            "last_scene": "home_home_spread",
+            "click_ignore_count": 0,
+            "rerunning": false,
+            "last_unknown": 0,
+            "home_excute_times": 0,
+            "last_scene_change": 1626736809462
+        }
+    },
+    "template": {
+        "settings": {
+            "mode": "auto",
+            "log_level": "info",
+            "min_loop_interval": 200,
+            "max_loop_interval": 400,
+            "min_click_interval": 200,
+            "max_click_interval": 400,
+            "max_scene_away_allow": 180,
+            "dinghao_wait": 1200,
+            "reconnect_mode": "campus-net",
+            "packageName": "com.netease.onmyoji.uc"
+        },
+        "switch": {
+            "global": true,
+            "fengmo": true,
+            "liaotu": true,
+            "liaotili": true,
+            "tupo": true,
+            "digui": true,
+            "diguiShare": false,
+            "friendPoint": true,
+            "jiyang": true,
+            "yinjie": true,
+            "liaotu_start": true
+        },
+        "global": {
+            "fighting": "tupo",
+            "last_get_free_blackegg": 1625443835439,
+            "last_kill_yinjie": 1625401169295
+        },
+        "team": {
+            "access_request": false,
+            "tongxin_request": false,
+            "role": "leader-",
+            "number_of_teams": 2,
+            "fighting": ""
+        },
+        "friends": {
+            "last_send_friend_point": 1625443891300,
+            "friend_point_send_count": 0
+        },
+        "tupo": {
+            "setting": {
+                "geren_mode": "all",
+                "geren_order": "453210",
+                "liao_order": "43210"
+            },
+            "last_liao_start": 1625446869576,
+            "liao_clear": 1625405821552,
+            "buy_buff": true,
+            "geren_demotion": false,
+            "geren_demotion_level": 58,
+            "refresh_time": 1625246507391,
+            "geren_fight_min_ticket": 12,
+            "liao_cd": 1625450444559,
+            "liao_fight_ed": true,
+            "geren_fight_clicked": false
+        },
+        "tansuo": {
+            "setting": {
+                "list": {},
+                "mode": "all_boss_first",
+                "change_food": true,
+                "food_priority": "n",
+                "max": 28
+            },
+            "fighting": null,
+            "end": true,
+            "findCount": 0,
+            "max": 28,
+            "last": "28",
+            "target": "28",
+            "level": "28"
+        },
+        "jiejie": {
+            "min_jiyang_gouyu_1": 67,
+            "min_jiyang_gouyu_2": 50,
+            "min_jiyang_tili_1": 151,
+            "min_jiyang_tili_2": 118,
+            "last_get_liaotili": 1625443825682,
+            "jiyang_end": 1625465407116,
+            "card_end": 0,
+            "jingyanjiuhu_full": true,
+            "jingyanjiuhu_last": 9104,
+            "jiyang_try_times": 0,
+            "jiyang_force": false
+        },
+        "digui": {
+            "last_kill_digui": 1625371772637,
+            "last_share_digui": 1621224087767
+        },
+        "fengmo": {
+            "last_kill_fengmo_boss": 1625389709022,
+            "clicked": false,
+            "boss_try_times": 0
+        },
+        "temp": {
+            "activityTo": "fengmo",
+            "last_click_button": "fighting_victory_confirm",
+            "last_scene": "home_home_spread",
+            "click_ignore_count": 0,
+            "rerunning": false,
+            "last_unknown": 0,
+            "home_excute_times": 0,
+            "last_scene_change": 1625447561636
+        }
+    }
+}

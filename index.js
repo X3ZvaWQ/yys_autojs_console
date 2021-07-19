@@ -6,7 +6,7 @@ const nodeWatch = require('node-watch');
 const moment = require('moment');
 const colors = require('colors-console')
 
-global.now = {};
+global.state = {};
 
 function getNowTimeFormat() {
     return moment().utcOffset('+0800').locale('zh-cn').format('YYYY-MM-DD LTS')
@@ -20,26 +20,26 @@ function log(message, levels) {
         'warn': 'yellow',
         'error': 'red'
     };
-    console.log(colors(colors_table[levels], `[${getNowTimeFormat()}][${levels.toUpperCase().padStart(7)}]: ${message}`));
+    console.log(colors(colors_table[levels], `[${getNowTimeFormat()}][${levels.toUpperCase().padStart(7)}]${message}`));
 }
 
 (async () => {
     //init now state
     {
-        let now = await fs.readFile('./now.json');
-        if (now != '{}') {
-            global.now = JSON.parse(now);
+        let state = await fs.readFile('./state.json');
+        if (state != '{}') {
+            global.state = JSON.parse(state);
         } else {
-            global.now = {};
+            global.state = {};
         }
-        log('now state initialized.', 'warn');
+        log('[ LOCAL]: State initialized.', 'warn');
     }
 
     //init ocrworker and declarate a function
     await ocrWorker.load();
     await ocrWorker.loadLanguage('eng+chi_sim');
     await ocrWorker.initialize('eng+chi_sim');
-    log(`OCR modules initialized.`, 'warn');
+    log(`[ LOCAL]: OCR modules initialized.`, 'warn');
     async function ocr(img, options) {
         if (options != undefined) {
             await worker.setParameters(options);
@@ -54,65 +54,63 @@ function log(message, levels) {
         ws.on('message', async function (message) {
             let request = JSON.parse(message);
             switch (request.type) {
-                case 'sync':
-                    if (request.method == 'push') {
-                        global.now[request.imei] = request.data;
-                        await fs.writeFile('./now.json', JSON.stringify(global.now, undefined, 2));
-                        log(`收到来自 ${request.imei} 的 Now State, 已存储。`, 'warn')
-                    } else if (request.method == 'pull') {
+                case 'state/pull':
+                    let imei = request.imei;
+                    if(global.state[imei] != undefined) {
                         ws.send(JSON.stringify({
-                            type: 'sync',
-                            code: 200,
-                            data: global.now,
-                            message: 'success'
+                            type: 'response',
+                            response: request.id,
+                            data: global.state[imei]
                         }));
-                        log(`收到来自 ${req.socket.remoteAddress} 的同步请求, 已发送。`, 'warn')
+                    }else{
+                        ws.send(JSON.stringify({
+                            type: 'response',
+                            response: request.id,
+                            data: global.state.template
+                        }));
                     }
+                    log(`[ LOCAL]: 收到来自 ${request.imei} 的 State 同步请求, 已发送。`, 'warn')
+                    break;
+                case 'state/push':
+                    global.state[request.imei] = request.data.data;
+                    await fs.writeFile('./state.json', JSON.stringify(global.state, undefined, 4));
+                    log(`[ LOCAL]: 收到来自 ${request.imei} 的 State 推送, 已存储。`, 'warn')
                     break;
                 case 'log':
-                    log(`[REMOTE]:${request.message}`, request.level);
-                    break;
+                    log(`[REMOTE]: ${request.data.message}`, request.data.level);
+                    break; 
                 case 'ocr':
-                    let result = await ocr(request.img, request.options);
+                    let result = await ocr(request.data.img, request.data.options);
                     ws.send(JSON.stringify({
-                        type: 'ocr_response',
-                        code: 200,
-                        message: 'success',
-                        result: result
+                        type: 'response',
+                        response: request.id,
+                        data: result
                     }))
                     break;
-                default:
-                    ws.send(JSON.stringify({
-                        type: 'error',
-                        message: 'unknown request type'
-                    }));
             }
         })
-        log(`Client connected. ip: ${req.socket.remoteAddress}`, 'warn');
+        log(`[ LOCAL]: Client connected. ip: ${req.socket.remoteAddress}`, 'warn');
         ws.send(JSON.stringify({
             type: 'connected',
             message: 'connect successed.'
         }));
-
     })
-    log('WebSocket Server init successed. Listining in port 8988', 'warn');
+    log('[ LOCAL]: WebSocket Server init successed. Listining in port 8988', 'warn');
 
-    log('File watch initialized.', 'warn');
+    log('[ LOCAL]: File watch initialized.', 'warn');
 
-    nodeWatch('./now.json', {}, async (event, name) => {
+    nodeWatch('./state.json', {}, async (event, name) => {
         let content = await fs.readJson(name);
-        if (JSON.stringify(content) == JSON.stringify(global.now)) {
+        if (JSON.stringify(content) == JSON.stringify(global.state)) {
             return;
         }
-        log('[LOCAL] now.json 发生变化，向客户端广播变化...')
-        global.now = content;
+        log('[ LOCAL]: state.json 发生变化，向客户端广播变化...')
+        global.state = content;
         wss.clients.forEach(function (client) {
             if (client.readyState === websocket.OPEN) {
                 client.send(JSON.stringify({
-                    type: 'sync',
-                    code: 200,
+                    type: 'state/push',
                     data: content,
-                    message: 'success'
                 }));
             }
         });

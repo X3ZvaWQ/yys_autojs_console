@@ -6,6 +6,7 @@
   "author": "X3ZvaWQ",
   "license": "MIT",
   "private": true,
+  "bin": "index.js",
   "dependencies": {
     "colors-console": "^1.0.3",
     "fs-extra": "^9.1.0",
